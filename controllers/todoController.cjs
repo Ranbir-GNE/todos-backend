@@ -62,7 +62,7 @@ const updateTodo = async (req, res) => {
 const deleteTodo = async (req, res) => {
   const { id } = req.params;
   try {
-    const todo = await todoModel.findById(id);
+    const todo = await todoModel.findByIdAndDelete(id);
     if (!todo) {
       return res.status(404).json({ message: "No todo found" });
     }
