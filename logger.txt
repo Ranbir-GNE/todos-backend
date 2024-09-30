@@ -27,3 +27,9 @@ Date: 29-02-2024:01:02:50 - IP: ::1, URL: /api/user/get-user Method: GET
 Date: 29-03-2024:01:03:03 - IP: ::1, URL: /api/user/get-user Method: GET
 Date: 29-03-2024:01:03:28 - IP: ::1, URL: /api/user/get-user Method: GET
 Date: 29-03-2024:01:03:43 - IP: ::1, URL: /api/user/get-user Method: GET
+Date: 30-25-2024:12:25:24 - IP: ::1, URL: /api/user/register Method: POST
+Date: 30-26-2024:12:26:08 - IP: ::ffff:127.0.0.1, URL: /api/user/register Method: POST
+Date: 30-27-2024:12:27:01 - IP: ::1, URL: /api/user/register Method: POST
+Date: 30-28-2024:12:28:44 - IP: ::1, URL: /api/user/login Method: POST
+Date: 30-28-2024:12:28:53 - IP: ::1, URL: /api/user/login Method: POST
+Date: 30-28-2024:12:28:59 - IP: ::1, URL: /api/user/login Method: POST

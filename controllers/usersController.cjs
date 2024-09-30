@@ -1,16 +1,22 @@
 const { userModel } = require("../models/userSchema.cjs");
 const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
 
 const register = async (req, res) => {
   const { userName, email, password } = req.body;
   if (!userName || !email || !password) {
     return res.status(400).json({ message: "Missing required fields" });
   }
+  const existingUser = await userModel.findOne({ email });
+  if (existingUser) {
+    return res.status(400).json({ message: "User already exists" });
+  }
+  const hashPassword = await bcrypt.hash(password, 10);
   try {
     const user = new userModel({
       userName,
       email,
-      password,
+      password: hashPassword,
     });
     await user.save();
     res.json(user);
@@ -29,8 +35,9 @@ const login = async (req, res) => {
     if (!user) {
       return res.status(400).json({ message: "User not found" });
     }
-    if (user.password !== password) {
-      return res.status(400).json({ message: "Invalid password" });
+    const validPassword = await bcrypt.compare(password, user.password);
+    if (!validPassword) {
+      return res.status(400).json({ message: "Invalid Password" });
     }
     const token = jwt.sign({ id: user._id }, process.env.JWT_KEY);
     if (!token) {
